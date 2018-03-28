@@ -5,20 +5,20 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'webmock/rspec'
-require 'vcr'
+# require 'webmock/rspec'
+# require 'vcr'
 
-def stub_get(filename, url)
-  json_response = File.read("./spec/fixtures/#{filename}")
-  stub_request(:get, url)
-    .to_return(status: 200, body: "#{json_response}", headers: {})
-end
+# def stub_get(filename, url)
+#   json_response = File.read("./spec/fixtures/#{filename}")
+#   stub_request(:get, url)
+#     .to_return(status: 200, body: "#{json_response}", headers: {})
+# end
 
-VCR.configure do |config|
-  config.cassette_library_dir = "spec/fixtures/cassettes"
-  config.hook_into :webmock
-  config.filter_sensitive_data('<NREL_KEY>') { ENV["NREL_API_KEY"]}
-end
+# VCR.configure do |config|
+#   config.cassette_library_dir = "spec/fixtures/cassettes"
+#   config.hook_into :webmock
+#   config.filter_sensitive_data('<NREL_KEY>') { ENV["NREL_API_KEY"]}
+# end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
