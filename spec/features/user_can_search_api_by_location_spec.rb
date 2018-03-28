@@ -10,8 +10,6 @@ require "rails_helper"
 
 describe "user visits root" do
   it "can search api by zipcode" do
-    user = User.create(name: "test", password: "test")
-
     visit root_path
     fill_in "input", with: "80203"
     click_on "Locate"
